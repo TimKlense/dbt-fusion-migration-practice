@@ -1,0 +1,81 @@
+version: 2
+
+# DEPRECATED: Using 'tests:' at the model level is old syntax
+# Should use 'data_tests:' in modern dbt
+
+models:
+  - name: stg_customers
+    description: Staged customer data from raw source
+    columns:
+      - name: customer_id
+        description: Primary key for customers
+        # OLD TEST SYNTAX - This will be flagged as deprecated!
+        tests:
+          - unique
+          - not_null
+      
+      - name: email
+        description: Customer email address
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: Staged order data from raw source
+    columns:
+      - name: order_id
+        description: Primary key for orders
+        # OLD TEST SYNTAX - This will be flagged as deprecated!
+        tests:
+          - unique
+          - not_null
+      
+      - name: customer_id
+        description: Foreign key to customers
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+
+  - name: stg_products
+    description: Staged product data from raw source
+    columns:
+      - name: product_id
+        description: Primary key for products
+        # OLD TEST SYNTAX - This will be flagged as deprecated!
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_customers
+    description: Customer dimension with lifetime metrics
+    columns:
+      - name: customer_id
+        description: Primary key for customer dimension
+        tests:
+          - unique
+          - not_null
+      
+      - name: customer_segment
+        description: Customer value segment
+        tests:
+          - accepted_values:
+              values: ['High Value', 'Medium Value', 'Low Value']
+
+  - name: fct_orders
+    description: Order fact table with denormalized customer and product info
+    columns:
+      - name: order_id
+        description: Primary key for orders
+        tests:
+          - unique
+          - not_null
+      
+      - name: total_amount
+        description: Total order amount
+        tests:
+          - not_null
+
+# NOTE: The test syntax above uses the old structure which may trigger deprecation warnings
+# dbt-autofix should be able to migrate these to the modern syntax if needed
+
