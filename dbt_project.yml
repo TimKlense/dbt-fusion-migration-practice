@@ -12,7 +12,7 @@ macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
 # DEPRECATED: source-paths is deprecated, should use model-paths
-source-paths: ["models"]
+# source-paths: ["models"]
 
 clean-targets:
   - "target"
