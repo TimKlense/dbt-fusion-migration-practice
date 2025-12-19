@@ -1,0 +1,22 @@
+product_id,product_name,category,list_price
+1,Laptop Pro,Electronics,1299.99
+2,Wireless Mouse,Electronics,29.99
+3,Keyboard Mechanical,Electronics,89.99
+4,Monitor 27inch,Electronics,349.99
+5,USB-C Hub,Electronics,49.99
+6,Desk Lamp LED,Office,39.99
+7,Office Chair,Office,299.99
+8,Standing Desk,Office,599.99
+9,Notebook Set,Office,19.99
+10,Pen Pack,Office,9.99
+11,Water Bottle,Lifestyle,24.99
+12,Backpack,Lifestyle,79.99
+13,Phone Case,Electronics,19.99
+14,Headphones Wireless,Electronics,149.99
+15,Webcam HD,Electronics,89.99
+16,Mouse Pad,Electronics,14.99
+17,Cable Organizer,Office,12.99
+18,Desk Mat,Office,34.99
+19,Planner 2024,Office,29.99
+20,Coffee Mug,Lifestyle,14.99
+

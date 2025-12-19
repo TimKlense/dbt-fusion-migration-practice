@@ -1,0 +1,48 @@
+name: 'fusion_migration_practice'
+version: '1.0.0'
+config-version: 2
+
+profile: 'fusion_migration_practice'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+# DEPRECATED: source-paths is deprecated, should use model-paths
+source-paths: ["models"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# INTENTIONAL DEPRECATIONS BELOW
+# These are for learning purposes - dbt-autofix will fix these!
+
+models:
+  fusion_migration_practice:
+    # Missing + prefix on access (MissingPlusPrefixDeprecation)
+    access: public
+    
+    staging:
+      # Missing + prefix on materialized (MissingPlusPrefixDeprecation)
+      materialized: view
+      # Missing + prefix on schema (MissingPlusPrefixDeprecation)
+      schema: staging
+    
+    marts:
+      # Missing + prefix on materialized (MissingPlusPrefixDeprecation)
+      materialized: table
+      # Missing + prefix on schema (MissingPlusPrefixDeprecation)
+      schema: marts
+
+seeds:
+  fusion_migration_practice:
+    # Missing + prefix on schema (MissingPlusPrefixDeprecation)
+    schema: raw
+
+# NOTE: After running dbt-autofix, all the above config keys should have + prefixes
+# Example: materialized: view → +materialized: view
+
