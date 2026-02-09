@@ -1,5 +1,5 @@
 -- Dimension table: customers
--- This model creates the customer dimension with aggregated metrics
+-- This model creates the customer dimension with aggregated metric (ET session test)s
 
 WITH customer_orders AS (
     SELECT
